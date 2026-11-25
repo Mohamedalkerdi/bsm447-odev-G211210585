@@ -6,8 +6,9 @@
 
 - [x] `G211210585` için K33-b (E–K ile başlayan ırklar) ve ek kural 4 (Silerken onay) atamasını doğrula.
 - [x] Expo SDK 58 ile boş JavaScript projesi ve başlangıç ekranı oluştur.
-- [ ] **Liste.** `useEffect` ve `fetch` ile [Dog CEO ırk listesini](https://dog.ceo/api/breeds/list/all) uygulama çalışırken al. Yanıtın `message` nesnesinde `Object.keys` kullan ve E–K aralığını iki uç dahil süz. API yanıtını proje dosyalarına kopyalama.
-- [ ] Irk adını ve alt ırk sayısını `FlatList` satırlarında göster. `keyExtractor` için ırk adını kullan. `TextInput` aramasını büyük/küçük harfe duyarsız yap.
+- [x] **Liste.** `useEffect` ve `fetch` ile [Dog CEO ırk listesini](https://dog.ceo/api/breeds/list/all) uygulama çalışırken al. Yanıtın `message` nesnesinde `Object.keys` kullan ve E–K aralığını iki uç dahil süz. API yanıtını proje dosyalarına kopyalama.
+- [x] Irk adını ve alt ırk sayısını `FlatList` satırlarında göster. `keyExtractor` için ırk adını kullan.
+- [ ] `TextInput` aramasını büyük/küçük harfe duyarsız yap.
 - [ ] **Navigasyon.** Liste ve Kaydedilenler için React Navigation Bottom Tab kullan. Detay ekranını sekmelerin üstündeki Stack üzerinden aç ve seçilen kaydı `route.params` ile al. Seçili kayıt için global değişken kullanma.
 - [ ] **Detay.** `https://dog.ceo/api/breed/{ırk}/images/random/3` adresinden üç rastgele fotoğraf iste. Irkın alt ırklarını ve “Kaydet / Kaydedilenlerden çıkar” düğmesini göster.
 - [ ] **Kaydedilenler.** Kaydedilen ırkları AsyncStorage ile sakla ve uygulamayı tamamen kapatıp açtıktan sonra doğrula.
@@ -21,7 +22,7 @@
 
 ## Uygulama yapısı
 
-`index.js` Expo giriş noktasıdır. Gün 1 ekranı `App.js` içindedir. Ekranlar geliştirilirken `src/screens/` altına taşınacak, gezinme yapısı `src/navigation/` içinde kurulacak. API ve kayıt işlemleri gerektiğinde `src/` altında küçük JavaScript modüllerinde tutulacak. Liste araması gibi ekrana ait durum ekranda kalacak. Kaydedilen ırklar, ilgili ekranların erişebileceği ortak React durumunda tutulacak ve uygulama açılırken AsyncStorage'dan yüklenecek.
+`index.js` Expo giriş noktasıdır. `App.js`, `src/screens/BreedListScreen.js` dosyasındaki Liste ekranını açar. `src/dogApi.js`, API isteğini ve E–K filtresini içerir. Gezinme yapısı `src/navigation/` içinde kurulacak. Liste araması gibi ekrana ait durum ekranda kalacak. Kaydedilen ırklar, ilgili ekranların erişebileceği ortak React durumunda tutulacak ve uygulama açılırken AsyncStorage'dan yüklenecek.
 
 ## Önerilen çalışma günleri
 
@@ -30,7 +31,7 @@ Tarihler sonraki oturumlar için öneridir. Her commit o gün tamamlanan ve doğ
 | Gün | Tarih | Commit kapsamı ve doğrulama |
 | --- | --- | --- |
 | 1 | 24 Kasım | Expo başlangıç ekranı, kurulum kontrolü ve geliştirme planı. |
-| 2 | 26 Kasım | Dog CEO isteği, `Object.keys`, E–K süzgeci ve ırk adı ile alt ırk sayısını gösteren `FlatList`. |
+| 2 | 25 Kasım | Dog CEO isteği, `Object.keys`, E–K süzgeci ve ırk adı ile alt ırk sayısını gösteren `FlatList`. |
 | 3 | 28 Kasım | `TextInput` araması. Aynı sorguyu büyük ve küçük harflerle dene. |
 | 4 | 30 Kasım | Bottom Tab ve Stack. Liste'den Detay'a `route.params` ile geç ve geri dön. |
 | 5 | 2 Aralık | Detayda üç rastgele fotoğraf ve alt ırk listesi. Alt ırkı olan ve olmayan iki ırkla dene. |
