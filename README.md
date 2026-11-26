@@ -10,7 +10,9 @@ Sakarya Üniversitesi, Mobil Uygulama Geliştirme dönem ödevi.
 | Kalıcı veri yöntemi | AsyncStorage (planlandı) |
 | Teslim | 15 Aralık 2026, 23.59 · OBİS |
 
-Gün 2 sürümü, uygulama açıldığında Dog CEO API'sinden E–K ile başlayan köpek ırklarını alır. Liste, her ırkın API'deki adını ve alt ırk sayısını gösterir. Uygulama gereksinimleri ve geliştirme takvimi [geliştirme planında](docs/gelistirme-plani.md) yer alır.
+Gün 3 sürümü, uygulama açıldığında Dog CEO API'sinden E–K ile başlayan köpek ırklarını alır. Liste, her ırkın API'deki adını ve alt ırk sayısını gösterir. Arama yazdıkça listeyi süzer, büyük/küçük harfi ve sorgunun başındaki veya sonundaki boşlukları yok sayar. Arama alanı temizlendiğinde tüm E–K ırkları yeniden görünür.
+
+Uygulama gereksinimleri ve geliştirme takvimi [geliştirme planında](docs/gelistirme-plani.md) yer alır.
 
 ## Çalıştırma
 

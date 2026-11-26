@@ -8,7 +8,7 @@
 - [x] Expo SDK 58 ile boş JavaScript projesi ve başlangıç ekranı oluştur.
 - [x] **Liste.** `useEffect` ve `fetch` ile [Dog CEO ırk listesini](https://dog.ceo/api/breeds/list/all) uygulama çalışırken al. Yanıtın `message` nesnesinde `Object.keys` kullan ve E–K aralığını iki uç dahil süz. API yanıtını proje dosyalarına kopyalama.
 - [x] Irk adını ve alt ırk sayısını `FlatList` satırlarında göster. `keyExtractor` için ırk adını kullan.
-- [ ] `TextInput` aramasını büyük/küçük harfe duyarsız yap.
+- [x] `TextInput` ile ırk adına göre anlık, büyük/küçük harfe duyarsız arama yap. Sorgunun başındaki ve sonundaki boşlukları yok say. Eşleşme yoksa “Sonuç bulunamadı” göster ve alan temizlenince tüm E–K ırklarını listele.
 - [ ] **Navigasyon.** Liste ve Kaydedilenler için React Navigation Bottom Tab kullan. Detay ekranını sekmelerin üstündeki Stack üzerinden aç ve seçilen kaydı `route.params` ile al. Seçili kayıt için global değişken kullanma.
 - [ ] **Detay.** `https://dog.ceo/api/breed/{ırk}/images/random/3` adresinden üç rastgele fotoğraf iste. Irkın alt ırklarını ve “Kaydet / Kaydedilenlerden çıkar” düğmesini göster.
 - [ ] **Kaydedilenler.** Kaydedilen ırkları AsyncStorage ile sakla ve uygulamayı tamamen kapatıp açtıktan sonra doğrula.
@@ -32,7 +32,7 @@ Tarihler sonraki oturumlar için öneridir. Her commit o gün tamamlanan ve doğ
 | --- | --- | --- |
 | 1 | 24 Kasım | Expo başlangıç ekranı, kurulum kontrolü ve geliştirme planı. |
 | 2 | 25 Kasım | Dog CEO isteği, `Object.keys`, E–K süzgeci ve ırk adı ile alt ırk sayısını gösteren `FlatList`. |
-| 3 | 28 Kasım | `TextInput` araması. Aynı sorguyu büyük ve küçük harflerle dene. |
+| 3 | 26 Kasım | `TextInput` araması ve liste tasarımı. Expo Go'da harf farkını, kısmi eşleşmeyi, boşlukları, boş sonucu ve listeyi geri getirmeyi doğrula. |
 | 4 | 30 Kasım | Bottom Tab ve Stack. Liste'den Detay'a `route.params` ile geç ve geri dön. |
 | 5 | 2 Aralık | Detayda üç rastgele fotoğraf ve alt ırk listesi. Alt ırkı olan ve olmayan iki ırkla dene. |
 | 6 | 4 Aralık | Kaydet düğmesi, Kaydedilenler ekranı ve AsyncStorage. Uygulamayı kapatıp aç ve kaydı kontrol et. |
