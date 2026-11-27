@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { fetchBreeds } from '../dogApi';
 
-export default function BreedListScreen() {
+export default function BreedListScreen({ navigation }) {
   const [breeds, setBreeds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -33,9 +33,6 @@ export default function BreedListScreen() {
 
   return (
     <View style={styles.container}>
-      <Text accessibilityRole="header" style={styles.title}>
-        Köpek Irkları (E–K)
-      </Text>
       {loading && (
         <View style={styles.feedback}>
           <ActivityIndicator color="#276453" />
@@ -64,6 +61,7 @@ export default function BreedListScreen() {
             data={visibleBreeds}
             keyExtractor={(breed) => breed.name}
             keyboardDismissMode="on-drag"
+            keyboardShouldPersistTaps="handled"
             ListEmptyComponent={
               <Text accessibilityLiveRegion="polite" style={[styles.feedback, styles.feedbackText]}>
                 {searchTerm ? 'Sonuç bulunamadı' : 'Bu aralıkta ırk bulunamadı.'}
@@ -71,10 +69,14 @@ export default function BreedListScreen() {
             }
             contentContainerStyle={styles.listContent}
             renderItem={({ item }) => (
-              <View style={styles.row}>
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => navigation.navigate('Detay', { breed: item })}
+                style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+              >
                 <Text style={styles.breedName}>{item.name}</Text>
                 <Text style={styles.count}>Alt ırk sayısı: {item.subBreedCount}</Text>
-              </View>
+              </Pressable>
             )}
           />
         </>
@@ -88,13 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5F6F1',
     paddingHorizontal: 20,
-    paddingTop: (StatusBar.currentHeight ?? 56) + 16,
-  },
-  title: {
-    color: '#182D25',
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 18,
+    paddingTop: 12,
   },
   search: {
     minHeight: 50,
@@ -121,7 +117,7 @@ const styles = StyleSheet.create({
   listContent: {
     gap: 8,
     paddingTop: 4,
-    paddingBottom: 32,
+    paddingBottom: 16,
   },
   row: {
     paddingHorizontal: 16,
@@ -130,6 +126,9 @@ const styles = StyleSheet.create({
     borderColor: '#DCE3DA',
     borderRadius: 12,
     backgroundColor: '#FFFFFF',
+  },
+  rowPressed: {
+    backgroundColor: '#E2EDE5',
   },
   breedName: {
     color: '#182D25',
