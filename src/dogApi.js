@@ -1,4 +1,5 @@
 const BREED_LIST_URL = 'https://dog.ceo/api/breeds/list/all';
+const BREED_IMAGES_URL = 'https://dog.ceo/api/breed';
 
 export async function fetchBreeds() {
   const response = await fetch(BREED_LIST_URL);
@@ -32,4 +33,24 @@ export async function fetchBreeds() {
     const subBreeds = json.message[name];
     return { name, subBreeds, subBreedCount: subBreeds.length };
   });
+}
+
+export async function fetchBreedImages(breedName) {
+  const url = `${BREED_IMAGES_URL}/${encodeURIComponent(breedName)}/images/random/3`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Dog CEO HTTP ${response.status}`);
+  }
+
+  const json = await response.json();
+  if (
+    json?.status !== 'success' ||
+    !Array.isArray(json.message) ||
+    json.message.length !== 3 ||
+    !json.message.every((uri) => typeof uri === 'string' && /^https:\/\/[a-z0-9.-]+\/\S+$/i.test(uri))
+  ) {
+    throw new Error('Dog CEO fotoğraf yanıtı geçersiz.');
+  }
+
+  return json.message;
 }
